@@ -39,7 +39,7 @@ is NIL. Returns <_:arg object />."
     (print object out)))
 
 (defmacro monitor (form)
-  "Evaluate <_:arg form /> logfing the result.  If evaluation raises
+  "Evaluate <_:arg form /> logging the result.  If evaluation raises
 an error, log and reraise it."
   (with-gensyms (e values)    
     `(handler-case ,form
@@ -92,43 +92,37 @@ position"
 (defvar *catch-errors?* t
   "Intercept error signals from tests?")
 
-(defmacro run-test (&rest tests)
-  "Run <_:arg tests />, each one supplied as a list ~
-<_:pseudo (test-name args) />. If no <_:arg tests /> are provided, ~
-run all tests in <_:var *test-thunks* />"
-  (with-gensyms (name names args largs i total err errors rez rezs)
-    `(let* ((,names ',(if tests
-                          (mapcar #`(car (mklist _)) tests)
-                          (hash-table-keys *test-thunks*)))
-            (,args (list ,@(if tests (mapcar #``(list ,@(cdr (mklist _))) tests)
-                               (loop :repeat (hash-table-count *test-thunks*)
-                                     :collect nil))))
-            (,total (length ,names)))
-       (logf t "Running ~a test~:p..." ,total)
-       (let* ((,i 0)
-              (,errors ())
-              (,rezs (mapcar (lambda (,name ,largs)
-                               (logf t "test #~a: ~a~#[;~a~]"
-                                     (incf ,i) ,name ,largs)
-                               (let ((,rez
-                                      (handler-case
-                                          (if-it (gethash ,name *test-thunks*)
-                                                 (multiple-value-bind
-                                                       (,rez ,err)
-                                                     (apply it ,largs)
-                                                   (push ,err ,errors)
-                                                   ,rez)
-                                                 (progn
-                                                   (logf t "No such test: ~a~%" ,name)
-                                                   nil))
-                                        (error (,err)
-                                          (unless *catch-errors?* (error ,err))
-                                          (logf nil  "ERROR ~a~%" (type-of ,err))
-                                          (push ,err ,errors)))))
-                                 (logf t "test #~a result: ~a~%" ,i ,rez)
-                                 ,rez))
-                             ,names ,args)))
-         (values ,rezs ,errors)))))
+(defun %run-test (name &rest args)
+  (if-it (gethash name *test-thunks*)
+         (handler-case (apply it args)
+           (error (e)
+             (when *catch-errors?* (error e))
+             (logf nil "Error: ~A~%" (type-of e))
+             (values nil e)))
+         (progn
+           (logf nil "Unknown test: ~A~%" name)
+           (values nil nil))))
+
+(defun %run-tests (&rest tests)
+  (let ((tests (or tests (hash-table-keys *test-thunks*))))
+    (logf t "Running ~A tests~:P...~%" (length tests))
+    (let ((count 0) list-of-results list-of-errors)
+      (dolist (test tests)
+        (destructuring-bind (name . args) (ensure-list test)
+          (logf t "Test #~A: ~A~#[~;~A~]" (incf count) name args)
+          (multiple-value-bind (result errors) (apply #'%run-test name args)
+            (logf nil "Result of test #~A: ~A" count result)
+            (push result list-of-results)
+            (push errors list-of-errors))))
+      (values (nreverse list-of-results) (nreverse list-of-errors)))))
+
+(defmacro run-tests (&rest tests)
+  "Run TESTS, where each test is supplied either as a symbol NAME or as a
+list (NAME . ARGS).  If TESTS is NIL, run all tests from *TEST-THUNKS*.
+Returns 2 lists: a list of test results (each result being T or NIL),
+and a list of test errors (each error being either a condition that
+was signalled during the test execution or a list of failed cases)."
+  `(%run-tests ,@(loop for test in tests collect `',test)))
 
 (locally-disable-literal-syntax :sharp-backq)
 

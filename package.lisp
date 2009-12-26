@@ -16,7 +16,7 @@
            #:*test-thunks*
            #:*catch-errors?*
            #:deftest
-           #:run-test
+           #:run-tests
 
            ;; fixtures
            #:load-fixture

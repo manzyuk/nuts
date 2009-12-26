@@ -15,3 +15,840 @@ Operation was SB-KERNEL::DIVISION, operands (1 0).
 21:05:49 | test #3 result: (The function NUTS-CORE::LOGG is undefined.
                             The function NUTS-CORE::LOGG is undefined.
                             The function NUTS-CORE::LOGG is undefined.)
+TRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-RPUSH numbers 1) -> T
+TRUE (RED-RPUSH числа 1) -> T
+TRUE (RED-RPUSH numbers 2) -> T
+TRUE (RED-RPUSH числа 2) -> T
+TRUE (RED-RPUSH numbers 3) -> T
+TRUE (RED-RPUSH числа 3) -> T
+TRUE (RED-SET object_1 o1) -> T
+TRUE (RED-SET об'єкт_1 о1) -> T
+TRUE (RED-SET object_2 o2) -> T
+TRUE (RED-SET об'єкт_2 о2) -> T
+TRUE (RED-SET object_3 o3) -> T
+TRUE (RED-SET об'єкт_3 о3) -> T
+TRUE (RED-SET weight_1 47) -> T
+TRUE (RED-SET вага_1 47) -> T
+TRUE (RED-SET weight_2 13) -> T
+TRUE (RED-SET вага_2 13) -> T
+TRUE (RED-SET weight_3 32) -> T
+TRUE (RED-SET вага_3 32) -> T
+EQUAL '(1 2 3) (RED-SORT numbers) -> T
+EQUAL '(1 2 3) (RED-SORT числа) -> T
+EQUAL '(2 3) (RED-SORT numbers START 1 COUNT 2) -> T
+EQUAL '(2 3) (RED-SORT числа START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT numbers DESC T) -> T
+EQUAL '(2 1) (RED-SORT numbers DESC T START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT числа DESC T) -> T
+EQUAL '(2 1) (RED-SORT числа DESC T START 1 COUNT 2) -> T
+EQUAL '(2 3 1) (RED-SORT numbers BY weight_*) -> T
+EQUAL '(2 3 1) (RED-SORT числа BY вага_*) -> T
+EQUAL '(o2 o3 o1) (RED-SORT numbers BY weight_* GET object_*) -> T
+EQUAL '(о2 о3 о1) (RED-SORT числа BY вага_* GET об'єкт_*) -> T
+EQUAL '(o1 o3 o2) (RED-SORT numbers BY weight_* GET object_* DESC T) -> T
+EQUAL '(о1 о3 о2) (RED-SORT числа BY вага_* GET об'єкт_* DESC T) -> T
+TRUE (RED-FLUSHDB) -> T
+Unknown test: COMMAND
+TRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-SET y 1) -> T
+TRUE (RED-SET ігрек 1) -> T
+STRING= 1 (RED-GETSET y 2) -> T
+STRING= 1 (RED-GETSET ігрек 2) -> T
+STRING= 2 (RED-GET y) -> T
+STRING= 2 (RED-GET ігрек) -> T
+TRUE (RED-SET z 3) -> T
+TRUE (RED-SET зед 3) -> T
+EQUAL '(2 3) (RED-MGET y z) -> T
+EQUAL '(2 3) (RED-MGET ігрек зед) -> T
+EQUAL '(2 NIL) (RED-MGET y a) -> T
+EQUAL '(2 NIL) (RED-MGET ігрек а) -> T
+NULL (RED-SETNX z 3) -> T
+NULL (RED-SETNX зед 3) -> T
+TRUE (RED-SETNX u 3) -> T
+TRUE (RED-SETNX ю 3) -> T
+= 4 (RED-INCR u) -> T
+= 4 (RED-INCR ю) -> T
+= 6 (RED-INCRBY u 2) -> T
+= 6 (RED-INCRBY ю 2) -> T
+= 5 (RED-DECR u) -> T
+= 5 (RED-DECR ю) -> T
+= 3 (RED-DECRBY u 2) -> T
+= 3 (RED-DECRBY ю 2) -> T
+TRUE (RED-EXISTS u) -> T
+TRUE (RED-EXISTS ю) -> T
+NULL (RED-EXISTS v) -> T
+NULL (RED-EXISTS ві) -> T
+TRUE (RED-DEL u) -> T
+TRUE (RED-DEL ю) -> T
+NULL (RED-EXISTS u) -> T
+NULL (RED-EXISTS ю) -> T
+STRING= none (RED-TYPE u) -> T
+STRING= none (RED-TYPE ю) -> T
+STRING= string (RED-TYPE z) -> T
+STRING= string (RED-TYPE зед) -> T
+EQUAL '(ігрек) (RED-KEYS і*) -> T
+TRUE (RED-RENAME z a) -> T
+TRUE (RED-RENAME зед а) -> T
+STRING= 3 (RED-GET a) -> T
+STRING= 3 (RED-GET а) -> T
+NULL (RED-RENAMENX y a) -> T
+NULL (RED-RENAMENX ігрек а) -> T
+TRUE (RED-RENAMENX y b) -> T
+TRUE (RED-RENAMENX ігрек бе) -> T
+= 4 (RED-DBSIZE) -> T
+TRUE (RED-EXPIRE b 1) -> T
+TRUE (RED-EXPIRE бе 1) -> T
+NULL (PROGN (SLEEP 2) (RED-GET b)) -> T
+NULL (PROGN (SLEEP 2) (RED-GET бе)) -> T
+NULL (RED-EXPIRE b 1) -> T
+NULL (RED-EXPIRE бе 1) -> T
+FIND-S '(a а) (RED-RANDOMKEY) -> T
+TRUE (RED-EXPIRE a 600) -> T
+TRUE (RED-EXPIRE а 600) -> T
+< 595 (RED-TTL a) -> T
+< 595 (RED-TTL а) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+= 3 (RED-LREM l 0 1) -> T
+= 3 (RED-LREM ел 0 1) -> T
+= 0 (RED-LREM l 0 a) -> T
+= 0 (RED-LREM ел 0 а) -> T
+TRUE (RED-LPUSH l 1) -> T
+TRUE (RED-LPUSH ел 1) -> T
+TRUE (RED-LPUSH l 0) -> T
+TRUE (RED-LPUSH ел 0) -> T
+= 2 (RED-LLEN l) -> T
+= 2 (RED-LLEN ел) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 1) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 1) -> T
+EQUAL '(0) (RED-LRANGE l 0 0) -> T
+EQUAL '(0) (RED-LRANGE ел 0 0) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 2) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 2) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 10) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 10) -> T
+EQUAL '(1) (RED-LRANGE l 1 1) -> T
+EQUAL '(1) (RED-LRANGE ел 1 1) -> T
+NULL (RED-LRANGE l 2 1) -> T
+NULL (RED-LRANGE ел 2 1) -> T
+NULL (RED-LRANGE l 2 3) -> T
+NULL (RED-LRANGE ел 2 3) -> T
+STRING= 0 (RED-LINDEX l 0) -> T
+STRING= 0 (RED-LINDEX ел 0) -> T
+TRUE (RED-LSET l 0 a) -> T
+TRUE (RED-LSET ел 0 а) -> T
+EQUAL '(a 1) (RED-LRANGE l 0 10) -> T
+EQUAL '(а 1) (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LTRIM l 0 0) -> T
+TRUE (RED-LTRIM ел 0 0) -> T
+EQUAL '(a) (RED-LRANGE l 0 10) -> T
+EQUAL '(а) (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LTRIM l 2 3) -> T
+TRUE (RED-LTRIM ел 2 3) -> T
+NULL (RED-LRANGE l 0 10) -> T
+NULL (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LPUSH l 2) -> T
+TRUE (RED-LPUSH ел 2) -> T
+TRUE (RED-RPUSH l 3) -> T
+TRUE (RED-RPUSH ел 3) -> T
+TRUE (RED-RPUSH l 4) -> T
+TRUE (RED-RPUSH ел 4) -> T
+STRING= 2 (RED-LPOP l) -> T
+STRING= 2 (RED-LPOP ел) -> T
+STRING= 4 (RED-RPOP l) -> T
+STRING= 4 (RED-RPOP ел) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+NULL (RED-SADD s 1) -> T
+NULL (RED-SADD ес 1) -> T
+TRUE (RED-SADD s 2) -> T
+TRUE (RED-SADD ес 2) -> T
+FIND-S '(2 1) (RED-SPOP s) -> T
+FIND-S '(2 1) (RED-SPOP ес) -> T
+TRUE (OR (RED-SADD s 2) (RED-SADD s 1)) -> T
+TRUE (OR (RED-SADD ес 2) (RED-SADD ес 1)) -> T
+TRUE (RED-SREM s 1) -> T
+TRUE (RED-SREM ес 1) -> T
+STRING= 2 (RED-SPOP s) -> T
+STRING= 2 (RED-SPOP ес) -> T
+NULL (RED-SPOP s) -> T
+NULL (RED-SPOP ес) -> T
+TRUE (RED-SADD s 2) -> T
+TRUE (RED-SADD ес 2) -> T
+TRUE (RED-SISMEMBER s 2) -> T
+TRUE (RED-SISMEMBER ес 2) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+TRUE (RED-SMOVE s s2 1) -> T
+TRUE (RED-SMOVE ес ес2 1) -> T
+TRUE (RED-SISMEMBER s2 1) -> T
+TRUE (RED-SISMEMBER ес2 1) -> T
+NULL (RED-SMOVE s s2 3) -> T
+NULL (RED-SMOVE ес ес2 3) -> T
+NULL (RED-SISMEMBER s2 3) -> T
+NULL (RED-SISMEMBER ес2 3) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+TRUE (RED-SMOVE s s2 1) -> T
+TRUE (RED-SMOVE ес ес2 1) -> T
+= 1 (RED-SCARD s) -> T
+= 1 (RED-SCARD ес) -> T
+NULL (RED-SINTER s s2) -> T
+NULL (RED-SINTER ес ес2) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+EQUAL '(1) (RED-SINTER s s2) -> T
+EQUAL '(1) (RED-SINTER ес ес2) -> T
+TRUE (RED-SINTERSTORE s3 s s2) -> T
+TRUE (RED-SINTERSTORE ес3 ес ес2) -> T
+EQUAL '(1) (RED-SMEMBERS s3) -> T
+EQUAL '(1) (RED-SMEMBERS ес3) -> T
+EQUAL '(1 2) (RED-SUNION s s2) -> T
+EQUAL '(1 2) (RED-SUNION ес ес2) -> T
+TRUE (RED-SUNIONSTORE s4 s s2) -> T
+TRUE (RED-SUNIONSTORE ес4 ес ес2) -> T
+EQUAL '(1 2) (RED-SMEMBERS s4) -> T
+EQUAL '(1 2) (RED-SMEMBERS ес4) -> T
+EQUAL '(2) (RED-SDIFF s4 s3) -> T
+EQUAL '(2) (RED-SDIFF ес4 ес3) -> T
+TRUE (RED-SDIFFSTORE s5 s4 s3) -> T
+TRUE (RED-SDIFFSTORE ес5 ес4 ес3) -> T
+EQUAL '(2) (RED-SMEMBERS s5) -> T
+EQUAL '(2) (RED-SMEMBERS ес5) -> T
+TRUE (RED-MSET k1 v1 k2 v2) -> T
+TRUE (RED-MSET ка1 ве1 ка2 ве2) -> T
+NULL (RED-MSETNX k1 w1 k3 v3) -> T
+NULL (RED-MSETNX ка1 дубльве1 ка3 ве3) -> T
+NULL (RED-EXISTS k3) -> T
+NULL (RED-EXISTS ка3) -> T
+TRUE (RED-MSETNX k4 v4 k5 v5) -> T
+TRUE (RED-MSETNX ка4 ве4 ка5 ве5) -> T
+EQUAL '(v1 v2 v4 v5) (RED-MGET k1 k2 k4 k5) -> T
+EQUAL '(ве1 ве2 ве4 ве5) (RED-MGET ка1 ка2 ка4 ка5) -> T
+TRUE (RED-MSET k1 w1 k2 v2) -> T
+TRUE (RED-MSET ка1 дубльве1 ка2 ве2) -> T
+EQUAL w1 (RED-GET k1) -> T
+EQUAL дубльве1 (RED-GET ка1) -> T
+TRUE (RED-SAVE) -> T
+TRUE (RED-BGSAVE) -> T
+INTEGERP (RED-LASTSAVE) -> T
+TRUE (RED-FLUSHDB) -> T
+21:41:19 | Running 3 testss...
+21:41:19 | Test #1: COMMANDSNILUnknown test: COMMANDS
+Result of test #1: NIL21:41:19 | Test #2: SORTNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-RPUSH numbers 1) -> T
+TRUE (RED-RPUSH числа 1) -> T
+TRUE (RED-RPUSH numbers 2) -> T
+TRUE (RED-RPUSH числа 2) -> T
+TRUE (RED-RPUSH numbers 3) -> T
+TRUE (RED-RPUSH числа 3) -> T
+TRUE (RED-SET object_1 o1) -> T
+TRUE (RED-SET об'єкт_1 о1) -> T
+TRUE (RED-SET object_2 o2) -> T
+TRUE (RED-SET об'єкт_2 о2) -> T
+TRUE (RED-SET object_3 o3) -> T
+TRUE (RED-SET об'єкт_3 о3) -> T
+TRUE (RED-SET weight_1 47) -> T
+TRUE (RED-SET вага_1 47) -> T
+TRUE (RED-SET weight_2 13) -> T
+TRUE (RED-SET вага_2 13) -> T
+TRUE (RED-SET weight_3 32) -> T
+TRUE (RED-SET вага_3 32) -> T
+EQUAL '(1 2 3) (RED-SORT numbers) -> T
+EQUAL '(1 2 3) (RED-SORT числа) -> T
+EQUAL '(2 3) (RED-SORT numbers START 1 COUNT 2) -> T
+EQUAL '(2 3) (RED-SORT числа START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT numbers DESC T) -> T
+EQUAL '(2 1) (RED-SORT numbers DESC T START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT числа DESC T) -> T
+EQUAL '(2 1) (RED-SORT числа DESC T START 1 COUNT 2) -> T
+EQUAL '(2 3 1) (RED-SORT numbers BY weight_*) -> T
+EQUAL '(2 3 1) (RED-SORT числа BY вага_*) -> T
+EQUAL '(o2 o3 o1) (RED-SORT numbers BY weight_* GET object_*) -> T
+EQUAL '(о2 о3 о1) (RED-SORT числа BY вага_* GET об'єкт_*) -> T
+EQUAL '(o1 o3 o2) (RED-SORT numbers BY weight_* GET object_* DESC T) -> T
+EQUAL '(о1 о3 о2) (RED-SORT числа BY вага_* GET об'єкт_* DESC T) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #2: T21:41:19 | Test #3: Z-COMMANDSNILUnknown test: Z-COMMANDS
+Result of test #3: NIL21:43:04 | Running 3 testss...
+21:43:04 | Test #1: COMMANDSNILUnknown test: COMMANDS
+Result of test #1: NIL21:43:04 | Test #2: SORTNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-RPUSH numbers 1) -> T
+TRUE (RED-RPUSH числа 1) -> T
+TRUE (RED-RPUSH numbers 2) -> T
+TRUE (RED-RPUSH числа 2) -> T
+TRUE (RED-RPUSH numbers 3) -> T
+TRUE (RED-RPUSH числа 3) -> T
+TRUE (RED-SET object_1 o1) -> T
+TRUE (RED-SET об'єкт_1 о1) -> T
+TRUE (RED-SET object_2 o2) -> T
+TRUE (RED-SET об'єкт_2 о2) -> T
+TRUE (RED-SET object_3 o3) -> T
+TRUE (RED-SET об'єкт_3 о3) -> T
+TRUE (RED-SET weight_1 47) -> T
+TRUE (RED-SET вага_1 47) -> T
+TRUE (RED-SET weight_2 13) -> T
+TRUE (RED-SET вага_2 13) -> T
+TRUE (RED-SET weight_3 32) -> T
+TRUE (RED-SET вага_3 32) -> T
+EQUAL '(1 2 3) (RED-SORT numbers) -> T
+EQUAL '(1 2 3) (RED-SORT числа) -> T
+EQUAL '(2 3) (RED-SORT numbers START 1 COUNT 2) -> T
+EQUAL '(2 3) (RED-SORT числа START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT numbers DESC T) -> T
+EQUAL '(2 1) (RED-SORT numbers DESC T START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT числа DESC T) -> T
+EQUAL '(2 1) (RED-SORT числа DESC T START 1 COUNT 2) -> T
+EQUAL '(2 3 1) (RED-SORT numbers BY weight_*) -> T
+EQUAL '(2 3 1) (RED-SORT числа BY вага_*) -> T
+EQUAL '(o2 o3 o1) (RED-SORT numbers BY weight_* GET object_*) -> T
+EQUAL '(о2 о3 о1) (RED-SORT числа BY вага_* GET об'єкт_*) -> T
+EQUAL '(o1 o3 o2) (RED-SORT numbers BY weight_* GET object_* DESC T) -> T
+EQUAL '(о1 о3 о2) (RED-SORT числа BY вага_* GET об'єкт_* DESC T) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #2: T21:43:04 | Test #3: Z-COMMANDSNILUnknown test: Z-COMMANDS
+Result of test #3: NIL21:44:17 | Running 3 testss...
+21:44:17 | Test #1: COMMANDSNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-SET y 1) -> T
+TRUE (RED-SET ігрек 1) -> T
+STRING= 1 (RED-GETSET y 2) -> T
+STRING= 1 (RED-GETSET ігрек 2) -> T
+STRING= 2 (RED-GET y) -> T
+STRING= 2 (RED-GET ігрек) -> T
+TRUE (RED-SET z 3) -> T
+TRUE (RED-SET зед 3) -> T
+EQUAL '(2 3) (RED-MGET y z) -> T
+EQUAL '(2 3) (RED-MGET ігрек зед) -> T
+EQUAL '(2 NIL) (RED-MGET y a) -> T
+EQUAL '(2 NIL) (RED-MGET ігрек а) -> T
+NULL (RED-SETNX z 3) -> T
+NULL (RED-SETNX зед 3) -> T
+TRUE (RED-SETNX u 3) -> T
+TRUE (RED-SETNX ю 3) -> T
+= 4 (RED-INCR u) -> T
+= 4 (RED-INCR ю) -> T
+= 6 (RED-INCRBY u 2) -> T
+= 6 (RED-INCRBY ю 2) -> T
+= 5 (RED-DECR u) -> T
+= 5 (RED-DECR ю) -> T
+= 3 (RED-DECRBY u 2) -> T
+= 3 (RED-DECRBY ю 2) -> T
+TRUE (RED-EXISTS u) -> T
+TRUE (RED-EXISTS ю) -> T
+NULL (RED-EXISTS v) -> T
+NULL (RED-EXISTS ві) -> T
+TRUE (RED-DEL u) -> T
+TRUE (RED-DEL ю) -> T
+NULL (RED-EXISTS u) -> T
+NULL (RED-EXISTS ю) -> T
+STRING= none (RED-TYPE u) -> T
+STRING= none (RED-TYPE ю) -> T
+STRING= string (RED-TYPE z) -> T
+STRING= string (RED-TYPE зед) -> T
+EQUAL '(ігрек) (RED-KEYS і*) -> T
+TRUE (RED-RENAME z a) -> T
+TRUE (RED-RENAME зед а) -> T
+STRING= 3 (RED-GET a) -> T
+STRING= 3 (RED-GET а) -> T
+NULL (RED-RENAMENX y a) -> T
+NULL (RED-RENAMENX ігрек а) -> T
+TRUE (RED-RENAMENX y b) -> T
+TRUE (RED-RENAMENX ігрек бе) -> T
+= 4 (RED-DBSIZE) -> T
+TRUE (RED-EXPIRE b 1) -> T
+TRUE (RED-EXPIRE бе 1) -> T
+NULL (PROGN (SLEEP 2) (RED-GET b)) -> T
+NULL (PROGN (SLEEP 2) (RED-GET бе)) -> T
+NULL (RED-EXPIRE b 1) -> T
+NULL (RED-EXPIRE бе 1) -> T
+FIND-S '(a а) (RED-RANDOMKEY) -> T
+TRUE (RED-EXPIRE a 600) -> T
+TRUE (RED-EXPIRE а 600) -> T
+< 595 (RED-TTL a) -> T
+< 595 (RED-TTL а) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+= 3 (RED-LREM l 0 1) -> T
+= 3 (RED-LREM ел 0 1) -> T
+= 0 (RED-LREM l 0 a) -> T
+= 0 (RED-LREM ел 0 а) -> T
+TRUE (RED-LPUSH l 1) -> T
+TRUE (RED-LPUSH ел 1) -> T
+TRUE (RED-LPUSH l 0) -> T
+TRUE (RED-LPUSH ел 0) -> T
+= 2 (RED-LLEN l) -> T
+= 2 (RED-LLEN ел) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 1) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 1) -> T
+EQUAL '(0) (RED-LRANGE l 0 0) -> T
+EQUAL '(0) (RED-LRANGE ел 0 0) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 2) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 2) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 10) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 10) -> T
+EQUAL '(1) (RED-LRANGE l 1 1) -> T
+EQUAL '(1) (RED-LRANGE ел 1 1) -> T
+NULL (RED-LRANGE l 2 1) -> T
+NULL (RED-LRANGE ел 2 1) -> T
+NULL (RED-LRANGE l 2 3) -> T
+NULL (RED-LRANGE ел 2 3) -> T
+STRING= 0 (RED-LINDEX l 0) -> T
+STRING= 0 (RED-LINDEX ел 0) -> T
+TRUE (RED-LSET l 0 a) -> T
+TRUE (RED-LSET ел 0 а) -> T
+EQUAL '(a 1) (RED-LRANGE l 0 10) -> T
+EQUAL '(а 1) (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LTRIM l 0 0) -> T
+TRUE (RED-LTRIM ел 0 0) -> T
+EQUAL '(a) (RED-LRANGE l 0 10) -> T
+EQUAL '(а) (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LTRIM l 2 3) -> T
+TRUE (RED-LTRIM ел 2 3) -> T
+NULL (RED-LRANGE l 0 10) -> T
+NULL (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LPUSH l 2) -> T
+TRUE (RED-LPUSH ел 2) -> T
+TRUE (RED-RPUSH l 3) -> T
+TRUE (RED-RPUSH ел 3) -> T
+TRUE (RED-RPUSH l 4) -> T
+TRUE (RED-RPUSH ел 4) -> T
+STRING= 2 (RED-LPOP l) -> T
+STRING= 2 (RED-LPOP ел) -> T
+STRING= 4 (RED-RPOP l) -> T
+STRING= 4 (RED-RPOP ел) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+NULL (RED-SADD s 1) -> T
+NULL (RED-SADD ес 1) -> T
+TRUE (RED-SADD s 2) -> T
+TRUE (RED-SADD ес 2) -> T
+FIND-S '(2 1) (RED-SPOP s) -> T
+FIND-S '(2 1) (RED-SPOP ес) -> T
+TRUE (OR (RED-SADD s 2) (RED-SADD s 1)) -> T
+TRUE (OR (RED-SADD ес 2) (RED-SADD ес 1)) -> T
+TRUE (RED-SREM s 1) -> T
+TRUE (RED-SREM ес 1) -> T
+STRING= 2 (RED-SPOP s) -> T
+STRING= 2 (RED-SPOP ес) -> T
+NULL (RED-SPOP s) -> T
+NULL (RED-SPOP ес) -> T
+TRUE (RED-SADD s 2) -> T
+TRUE (RED-SADD ес 2) -> T
+TRUE (RED-SISMEMBER s 2) -> T
+TRUE (RED-SISMEMBER ес 2) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+TRUE (RED-SMOVE s s2 1) -> T
+TRUE (RED-SMOVE ес ес2 1) -> T
+TRUE (RED-SISMEMBER s2 1) -> T
+TRUE (RED-SISMEMBER ес2 1) -> T
+NULL (RED-SMOVE s s2 3) -> T
+NULL (RED-SMOVE ес ес2 3) -> T
+NULL (RED-SISMEMBER s2 3) -> T
+NULL (RED-SISMEMBER ес2 3) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+TRUE (RED-SMOVE s s2 1) -> T
+TRUE (RED-SMOVE ес ес2 1) -> T
+= 1 (RED-SCARD s) -> T
+= 1 (RED-SCARD ес) -> T
+NULL (RED-SINTER s s2) -> T
+NULL (RED-SINTER ес ес2) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+EQUAL '(1) (RED-SINTER s s2) -> T
+EQUAL '(1) (RED-SINTER ес ес2) -> T
+TRUE (RED-SINTERSTORE s3 s s2) -> T
+TRUE (RED-SINTERSTORE ес3 ес ес2) -> T
+EQUAL '(1) (RED-SMEMBERS s3) -> T
+EQUAL '(1) (RED-SMEMBERS ес3) -> T
+EQUAL '(1 2) (RED-SUNION s s2) -> T
+EQUAL '(1 2) (RED-SUNION ес ес2) -> T
+TRUE (RED-SUNIONSTORE s4 s s2) -> T
+TRUE (RED-SUNIONSTORE ес4 ес ес2) -> T
+EQUAL '(1 2) (RED-SMEMBERS s4) -> T
+EQUAL '(1 2) (RED-SMEMBERS ес4) -> T
+EQUAL '(2) (RED-SDIFF s4 s3) -> T
+EQUAL '(2) (RED-SDIFF ес4 ес3) -> T
+TRUE (RED-SDIFFSTORE s5 s4 s3) -> T
+TRUE (RED-SDIFFSTORE ес5 ес4 ес3) -> T
+EQUAL '(2) (RED-SMEMBERS s5) -> T
+EQUAL '(2) (RED-SMEMBERS ес5) -> T
+TRUE (RED-MSET k1 v1 k2 v2) -> T
+TRUE (RED-MSET ка1 ве1 ка2 ве2) -> T
+NULL (RED-MSETNX k1 w1 k3 v3) -> T
+NULL (RED-MSETNX ка1 дубльве1 ка3 ве3) -> T
+NULL (RED-EXISTS k3) -> T
+NULL (RED-EXISTS ка3) -> T
+TRUE (RED-MSETNX k4 v4 k5 v5) -> T
+TRUE (RED-MSETNX ка4 ве4 ка5 ве5) -> T
+EQUAL '(v1 v2 v4 v5) (RED-MGET k1 k2 k4 k5) -> T
+EQUAL '(ве1 ве2 ве4 ве5) (RED-MGET ка1 ка2 ка4 ка5) -> T
+TRUE (RED-MSET k1 w1 k2 v2) -> T
+TRUE (RED-MSET ка1 дубльве1 ка2 ве2) -> T
+EQUAL w1 (RED-GET k1) -> T
+EQUAL дубльве1 (RED-GET ка1) -> T
+TRUE (RED-SAVE) -> T
+TRUE (RED-BGSAVE) -> T
+INTEGERP (RED-LASTSAVE) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #1: T21:44:21 | Test #2: SORTNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-RPUSH numbers 1) -> T
+TRUE (RED-RPUSH числа 1) -> T
+TRUE (RED-RPUSH numbers 2) -> T
+TRUE (RED-RPUSH числа 2) -> T
+TRUE (RED-RPUSH numbers 3) -> T
+TRUE (RED-RPUSH числа 3) -> T
+TRUE (RED-SET object_1 o1) -> T
+TRUE (RED-SET об'єкт_1 о1) -> T
+TRUE (RED-SET object_2 o2) -> T
+TRUE (RED-SET об'єкт_2 о2) -> T
+TRUE (RED-SET object_3 o3) -> T
+TRUE (RED-SET об'єкт_3 о3) -> T
+TRUE (RED-SET weight_1 47) -> T
+TRUE (RED-SET вага_1 47) -> T
+TRUE (RED-SET weight_2 13) -> T
+TRUE (RED-SET вага_2 13) -> T
+TRUE (RED-SET weight_3 32) -> T
+TRUE (RED-SET вага_3 32) -> T
+EQUAL '(1 2 3) (RED-SORT numbers) -> T
+EQUAL '(1 2 3) (RED-SORT числа) -> T
+EQUAL '(2 3) (RED-SORT numbers START 1 COUNT 2) -> T
+EQUAL '(2 3) (RED-SORT числа START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT numbers DESC T) -> T
+EQUAL '(2 1) (RED-SORT numbers DESC T START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT числа DESC T) -> T
+EQUAL '(2 1) (RED-SORT числа DESC T START 1 COUNT 2) -> T
+EQUAL '(2 3 1) (RED-SORT numbers BY weight_*) -> T
+EQUAL '(2 3 1) (RED-SORT числа BY вага_*) -> T
+EQUAL '(o2 o3 o1) (RED-SORT numbers BY weight_* GET object_*) -> T
+EQUAL '(о2 о3 о1) (RED-SORT числа BY вага_* GET об'єкт_*) -> T
+EQUAL '(o1 o3 o2) (RED-SORT numbers BY weight_* GET object_* DESC T) -> T
+EQUAL '(о1 о3 о2) (RED-SORT числа BY вага_* GET об'єкт_* DESC T) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #2: T21:44:21 | Test #3: Z-COMMANDSNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-ZADD set 1 e1) -> T
+TRUE (RED-ZADD множина 1 елемент1) -> T
+TRUE (RED-ZADD set 2 e2) -> T
+TRUE (RED-ZADD множина 2 елемент2) -> T
+TRUE (RED-ZADD set 3 e3) -> T
+TRUE (RED-ZADD множина 3 елемент3) -> T
+TRUE (RED-ZREM set e2) -> T
+TRUE (RED-ZREM множина елемент2) -> T
+NULL (RED-ZREM set e2) -> T
+NULL (RED-ZREM множина елемент2) -> T
+TRUE (RED-ZADD set 10 e2) -> T
+TRUE (RED-ZADD множина 10 елемент2) -> T
+TRUE (RED-ZADD set 4 e4) -> T
+TRUE (RED-ZADD множина 4 елемент4) -> T
+TRUE (RED-ZADD set 5 e5) -> T
+TRUE (RED-ZADD множина 5 елемент5) -> T
+EQUAL 5 (RED-ZCARD set) -> T
+EQUAL 5 (RED-ZCARD множина) -> T
+EQUAL 10 (RED-ZSCORE set e2) -> T
+EQUAL 10 (RED-ZSCORE множина елемент2) -> T
+EQUAL '(e3 e4 e5) (RED-ZRANGE set 1 3) -> T
+EQUAL '(елемент3 елемент4 елемент5) (RED-ZRANGE множина 1 3) -> T
+EQUAL '(e4 e3 e1) (RED-ZREVRANGE set 2 4) -> T
+EQUAL '(елемент4 елемент3 елемент1) (RED-ZREVRANGE множина 2 4) -> T
+EQUAL '(e5 e2) (RED-ZRANGEBYSCORE set 5 10) -> T
+EQUAL '(елемент5 елемент2) (RED-ZRANGEBYSCORE множина 5 10) -> T
+EQUAL 3 (RED-ZREMRANGEBYSCORE set 2 7) -> T
+EQUAL 3 (RED-ZREMRANGEBYSCORE множина 2 7) -> T
+EQUAL '(e1 e2) (RED-ZRANGE set 0 -1) -> T
+EQUAL '(елемент1 елемент2) (RED-ZRANGE множина 0 -1) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #3: T21:44:40 | Running 3 testss...
+21:44:40 | Test #1: COMMANDSNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-SET y 1) -> T
+TRUE (RED-SET ігрек 1) -> T
+STRING= 1 (RED-GETSET y 2) -> T
+STRING= 1 (RED-GETSET ігрек 2) -> T
+STRING= 2 (RED-GET y) -> T
+STRING= 2 (RED-GET ігрек) -> T
+TRUE (RED-SET z 3) -> T
+TRUE (RED-SET зед 3) -> T
+EQUAL '(2 3) (RED-MGET y z) -> T
+EQUAL '(2 3) (RED-MGET ігрек зед) -> T
+EQUAL '(2 NIL) (RED-MGET y a) -> T
+EQUAL '(2 NIL) (RED-MGET ігрек а) -> T
+NULL (RED-SETNX z 3) -> T
+NULL (RED-SETNX зед 3) -> T
+TRUE (RED-SETNX u 3) -> T
+TRUE (RED-SETNX ю 3) -> T
+= 4 (RED-INCR u) -> T
+= 4 (RED-INCR ю) -> T
+= 6 (RED-INCRBY u 2) -> T
+= 6 (RED-INCRBY ю 2) -> T
+= 5 (RED-DECR u) -> T
+= 5 (RED-DECR ю) -> T
+= 3 (RED-DECRBY u 2) -> T
+= 3 (RED-DECRBY ю 2) -> T
+TRUE (RED-EXISTS u) -> T
+TRUE (RED-EXISTS ю) -> T
+NULL (RED-EXISTS v) -> T
+NULL (RED-EXISTS ві) -> T
+TRUE (RED-DEL u) -> T
+TRUE (RED-DEL ю) -> T
+NULL (RED-EXISTS u) -> T
+NULL (RED-EXISTS ю) -> T
+STRING= none (RED-TYPE u) -> T
+STRING= none (RED-TYPE ю) -> T
+STRING= string (RED-TYPE z) -> T
+STRING= string (RED-TYPE зед) -> T
+EQUAL '(ігрек) (RED-KEYS і*) -> T
+TRUE (RED-RENAME z a) -> T
+TRUE (RED-RENAME зед а) -> T
+STRING= 3 (RED-GET a) -> T
+STRING= 3 (RED-GET а) -> T
+NULL (RED-RENAMENX y a) -> T
+NULL (RED-RENAMENX ігрек а) -> T
+TRUE (RED-RENAMENX y b) -> T
+TRUE (RED-RENAMENX ігрек бе) -> T
+= 4 (RED-DBSIZE) -> T
+TRUE (RED-EXPIRE b 1) -> T
+TRUE (RED-EXPIRE бе 1) -> T
+NULL (PROGN (SLEEP 2) (RED-GET b)) -> T
+NULL (PROGN (SLEEP 2) (RED-GET бе)) -> T
+NULL (RED-EXPIRE b 1) -> T
+NULL (RED-EXPIRE бе 1) -> T
+FIND-S '(a а) (RED-RANDOMKEY) -> T
+TRUE (RED-EXPIRE a 600) -> T
+TRUE (RED-EXPIRE а 600) -> T
+< 595 (RED-TTL a) -> T
+< 595 (RED-TTL а) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+TRUE (RED-RPUSH l 1) -> T
+TRUE (RED-RPUSH ел 1) -> T
+= 3 (RED-LREM l 0 1) -> T
+= 3 (RED-LREM ел 0 1) -> T
+= 0 (RED-LREM l 0 a) -> T
+= 0 (RED-LREM ел 0 а) -> T
+TRUE (RED-LPUSH l 1) -> T
+TRUE (RED-LPUSH ел 1) -> T
+TRUE (RED-LPUSH l 0) -> T
+TRUE (RED-LPUSH ел 0) -> T
+= 2 (RED-LLEN l) -> T
+= 2 (RED-LLEN ел) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 1) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 1) -> T
+EQUAL '(0) (RED-LRANGE l 0 0) -> T
+EQUAL '(0) (RED-LRANGE ел 0 0) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 2) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 2) -> T
+EQUAL '(0 1) (RED-LRANGE l 0 10) -> T
+EQUAL '(0 1) (RED-LRANGE ел 0 10) -> T
+EQUAL '(1) (RED-LRANGE l 1 1) -> T
+EQUAL '(1) (RED-LRANGE ел 1 1) -> T
+NULL (RED-LRANGE l 2 1) -> T
+NULL (RED-LRANGE ел 2 1) -> T
+NULL (RED-LRANGE l 2 3) -> T
+NULL (RED-LRANGE ел 2 3) -> T
+STRING= 0 (RED-LINDEX l 0) -> T
+STRING= 0 (RED-LINDEX ел 0) -> T
+TRUE (RED-LSET l 0 a) -> T
+TRUE (RED-LSET ел 0 а) -> T
+EQUAL '(a 1) (RED-LRANGE l 0 10) -> T
+EQUAL '(а 1) (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LTRIM l 0 0) -> T
+TRUE (RED-LTRIM ел 0 0) -> T
+EQUAL '(a) (RED-LRANGE l 0 10) -> T
+EQUAL '(а) (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LTRIM l 2 3) -> T
+TRUE (RED-LTRIM ел 2 3) -> T
+NULL (RED-LRANGE l 0 10) -> T
+NULL (RED-LRANGE ел 0 10) -> T
+TRUE (RED-LPUSH l 2) -> T
+TRUE (RED-LPUSH ел 2) -> T
+TRUE (RED-RPUSH l 3) -> T
+TRUE (RED-RPUSH ел 3) -> T
+TRUE (RED-RPUSH l 4) -> T
+TRUE (RED-RPUSH ел 4) -> T
+STRING= 2 (RED-LPOP l) -> T
+STRING= 2 (RED-LPOP ел) -> T
+STRING= 4 (RED-RPOP l) -> T
+STRING= 4 (RED-RPOP ел) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+NULL (RED-SADD s 1) -> T
+NULL (RED-SADD ес 1) -> T
+TRUE (RED-SADD s 2) -> T
+TRUE (RED-SADD ес 2) -> T
+FIND-S '(2 1) (RED-SPOP s) -> T
+FIND-S '(2 1) (RED-SPOP ес) -> T
+TRUE (OR (RED-SADD s 2) (RED-SADD s 1)) -> T
+TRUE (OR (RED-SADD ес 2) (RED-SADD ес 1)) -> T
+TRUE (RED-SREM s 1) -> T
+TRUE (RED-SREM ес 1) -> T
+STRING= 2 (RED-SPOP s) -> T
+STRING= 2 (RED-SPOP ес) -> T
+NULL (RED-SPOP s) -> T
+NULL (RED-SPOP ес) -> T
+TRUE (RED-SADD s 2) -> T
+TRUE (RED-SADD ес 2) -> T
+TRUE (RED-SISMEMBER s 2) -> T
+TRUE (RED-SISMEMBER ес 2) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+TRUE (RED-SMOVE s s2 1) -> T
+TRUE (RED-SMOVE ес ес2 1) -> T
+TRUE (RED-SISMEMBER s2 1) -> T
+TRUE (RED-SISMEMBER ес2 1) -> T
+NULL (RED-SMOVE s s2 3) -> T
+NULL (RED-SMOVE ес ес2 3) -> T
+NULL (RED-SISMEMBER s2 3) -> T
+NULL (RED-SISMEMBER ес2 3) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+TRUE (RED-SMOVE s s2 1) -> T
+TRUE (RED-SMOVE ес ес2 1) -> T
+= 1 (RED-SCARD s) -> T
+= 1 (RED-SCARD ес) -> T
+NULL (RED-SINTER s s2) -> T
+NULL (RED-SINTER ес ес2) -> T
+TRUE (RED-SADD s 1) -> T
+TRUE (RED-SADD ес 1) -> T
+EQUAL '(1) (RED-SINTER s s2) -> T
+EQUAL '(1) (RED-SINTER ес ес2) -> T
+TRUE (RED-SINTERSTORE s3 s s2) -> T
+TRUE (RED-SINTERSTORE ес3 ес ес2) -> T
+EQUAL '(1) (RED-SMEMBERS s3) -> T
+EQUAL '(1) (RED-SMEMBERS ес3) -> T
+EQUAL '(1 2) (RED-SUNION s s2) -> T
+EQUAL '(1 2) (RED-SUNION ес ес2) -> T
+TRUE (RED-SUNIONSTORE s4 s s2) -> T
+TRUE (RED-SUNIONSTORE ес4 ес ес2) -> T
+EQUAL '(1 2) (RED-SMEMBERS s4) -> T
+EQUAL '(1 2) (RED-SMEMBERS ес4) -> T
+EQUAL '(2) (RED-SDIFF s4 s3) -> T
+EQUAL '(2) (RED-SDIFF ес4 ес3) -> T
+TRUE (RED-SDIFFSTORE s5 s4 s3) -> T
+TRUE (RED-SDIFFSTORE ес5 ес4 ес3) -> T
+EQUAL '(2) (RED-SMEMBERS s5) -> T
+EQUAL '(2) (RED-SMEMBERS ес5) -> T
+TRUE (RED-MSET k1 v1 k2 v2) -> T
+TRUE (RED-MSET ка1 ве1 ка2 ве2) -> T
+NULL (RED-MSETNX k1 w1 k3 v3) -> T
+NULL (RED-MSETNX ка1 дубльве1 ка3 ве3) -> T
+NULL (RED-EXISTS k3) -> T
+NULL (RED-EXISTS ка3) -> T
+TRUE (RED-MSETNX k4 v4 k5 v5) -> T
+TRUE (RED-MSETNX ка4 ве4 ка5 ве5) -> T
+EQUAL '(v1 v2 v4 v5) (RED-MGET k1 k2 k4 k5) -> T
+EQUAL '(ве1 ве2 ве4 ве5) (RED-MGET ка1 ка2 ка4 ка5) -> T
+TRUE (RED-MSET k1 w1 k2 v2) -> T
+TRUE (RED-MSET ка1 дубльве1 ка2 ве2) -> T
+EQUAL w1 (RED-GET k1) -> T
+EQUAL дубльве1 (RED-GET ка1) -> T
+TRUE (RED-SAVE) -> T
+TRUE (RED-BGSAVE) -> T
+INTEGERP (RED-LASTSAVE) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #1: T21:44:44 | Test #2: SORTNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-RPUSH numbers 1) -> T
+TRUE (RED-RPUSH числа 1) -> T
+TRUE (RED-RPUSH numbers 2) -> T
+TRUE (RED-RPUSH числа 2) -> T
+TRUE (RED-RPUSH numbers 3) -> T
+TRUE (RED-RPUSH числа 3) -> T
+TRUE (RED-SET object_1 o1) -> T
+TRUE (RED-SET об'єкт_1 о1) -> T
+TRUE (RED-SET object_2 o2) -> T
+TRUE (RED-SET об'єкт_2 о2) -> T
+TRUE (RED-SET object_3 o3) -> T
+TRUE (RED-SET об'єкт_3 о3) -> T
+TRUE (RED-SET weight_1 47) -> T
+TRUE (RED-SET вага_1 47) -> T
+TRUE (RED-SET weight_2 13) -> T
+TRUE (RED-SET вага_2 13) -> T
+TRUE (RED-SET weight_3 32) -> T
+TRUE (RED-SET вага_3 32) -> T
+EQUAL '(1 2 3) (RED-SORT numbers) -> T
+EQUAL '(1 2 3) (RED-SORT числа) -> T
+EQUAL '(2 3) (RED-SORT numbers START 1 COUNT 2) -> T
+EQUAL '(2 3) (RED-SORT числа START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT numbers DESC T) -> T
+EQUAL '(2 1) (RED-SORT numbers DESC T START 1 COUNT 2) -> T
+EQUAL '(3 2 1) (RED-SORT числа DESC T) -> T
+EQUAL '(2 1) (RED-SORT числа DESC T START 1 COUNT 2) -> T
+EQUAL '(2 3 1) (RED-SORT numbers BY weight_*) -> T
+EQUAL '(2 3 1) (RED-SORT числа BY вага_*) -> T
+EQUAL '(o2 o3 o1) (RED-SORT numbers BY weight_* GET object_*) -> T
+EQUAL '(о2 о3 о1) (RED-SORT числа BY вага_* GET об'єкт_*) -> T
+EQUAL '(o1 o3 o2) (RED-SORT numbers BY weight_* GET object_* DESC T) -> T
+EQUAL '(о1 о3 о2) (RED-SORT числа BY вага_* GET об'єкт_* DESC T) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #2: T21:44:44 | Test #3: Z-COMMANDSNILTRUE (RED-PING) -> T
+TRUE (RED-SELECT 15) -> T
+TRUE (RED-FLUSHDB) -> T
+TRUE (RED-ZADD set 1 e1) -> T
+TRUE (RED-ZADD множина 1 елемент1) -> T
+TRUE (RED-ZADD set 2 e2) -> T
+TRUE (RED-ZADD множина 2 елемент2) -> T
+TRUE (RED-ZADD set 3 e3) -> T
+TRUE (RED-ZADD множина 3 елемент3) -> T
+TRUE (RED-ZREM set e2) -> T
+TRUE (RED-ZREM множина елемент2) -> T
+NULL (RED-ZREM set e2) -> T
+NULL (RED-ZREM множина елемент2) -> T
+TRUE (RED-ZADD set 10 e2) -> T
+TRUE (RED-ZADD множина 10 елемент2) -> T
+TRUE (RED-ZADD set 4 e4) -> T
+TRUE (RED-ZADD множина 4 елемент4) -> T
+TRUE (RED-ZADD set 5 e5) -> T
+TRUE (RED-ZADD множина 5 елемент5) -> T
+EQUAL 5 (RED-ZCARD set) -> T
+EQUAL 5 (RED-ZCARD множина) -> T
+EQUAL 10 (RED-ZSCORE set e2) -> T
+EQUAL 10 (RED-ZSCORE множина елемент2) -> T
+EQUAL '(e3 e4 e5) (RED-ZRANGE set 1 3) -> T
+EQUAL '(елемент3 елемент4 елемент5) (RED-ZRANGE множина 1 3) -> T
+EQUAL '(e4 e3 e1) (RED-ZREVRANGE set 2 4) -> T
+EQUAL '(елемент4 елемент3 елемент1) (RED-ZREVRANGE множина 2 4) -> T
+EQUAL '(e5 e2) (RED-ZRANGEBYSCORE set 5 10) -> T
+EQUAL '(елемент5 елемент2) (RED-ZRANGEBYSCORE множина 5 10) -> T
+EQUAL 3 (RED-ZREMRANGEBYSCORE set 2 7) -> T
+EQUAL 3 (RED-ZREMRANGEBYSCORE множина 2 7) -> T
+EQUAL '(e1 e2) (RED-ZRANGE set 0 -1) -> T
+EQUAL '(елемент1 елемент2) (RED-ZRANGE множина 0 -1) -> T
+TRUE (RED-FLUSHDB) -> T
+Result of test #3: T
